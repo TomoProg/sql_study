@@ -1,0 +1,18 @@
+version: '3'
+
+volumes:
+  mysql-db:
+    driver: local
+
+services:
+  db:
+    build: ./db/
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345678
+    volumes:
+      - ./db/src:/sql_study/src
+      - ./db/resource:/sql_study/resource
+      - mysql-db:/var/lib/mysql
+    ports:
+      - "13306:3306"
+
